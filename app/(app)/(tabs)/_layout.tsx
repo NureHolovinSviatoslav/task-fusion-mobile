@@ -1,21 +1,24 @@
 import { Tabs } from 'expo-router';
 import { Bell, LayoutDashboard, User } from 'lucide-react-native';
 import React from 'react';
-import { Platform } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export default function TabLayout() {
+  const safeAreaInsets = useSafeAreaInsets();
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: Platform.select({
-          ios: {
-            position: 'absolute',
-            backgroundColor: '#F8F8FB',
-          },
-          default: {},
-        }),
+        tabBarStyle: {
+          backgroundColor: '#F8F8FB',
+        },
         tabBarActiveTintColor: '#FD633D',
+        sceneStyle: {
+          paddingTop: safeAreaInsets.top,
+          paddingLeft: safeAreaInsets.left,
+          paddingRight: safeAreaInsets.right,
+        },
       }}
     >
       <Tabs.Screen
