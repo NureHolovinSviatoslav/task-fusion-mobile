@@ -10,10 +10,7 @@ export const useLogout = () => {
   return useMutation({
     mutationFn: logout,
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ['user_profile'],
-        exact: false,
-      });
+      queryClient.clear();
 
       setLocalUserTokens({ accessToken: null, refreshToken: null });
 

@@ -14,10 +14,7 @@ export const useSignIn = () => {
 
       await setLocalUserTokens(data);
 
-      queryClient.invalidateQueries({
-        queryKey: ['user_profile'],
-        exact: false,
-      });
+      queryClient.clear();
 
       replace('/(app)/(tabs)');
     },
