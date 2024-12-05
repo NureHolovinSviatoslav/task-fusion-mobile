@@ -1,6 +1,7 @@
 import { Project, useProjects } from '@/apis/projects';
 import { useUserProfile } from '@/apis/users';
 import { UserType } from '@/types/enums';
+import { formatDateDD_MM_YYYY } from '@/utils';
 import { Link } from 'expo-router';
 import { ClockArrowDown, ClockArrowUp } from 'lucide-react-native';
 import { FC } from 'react';
@@ -22,18 +23,6 @@ const getDashboard = (userType?: UserType) => {
     default:
       return 'Dashboard';
   }
-};
-
-const formatDate = (date: Date) => {
-  const targetDate = date instanceof Date ? date : new Date(date);
-
-  const pad = (num: number) => num.toString().padStart(2, '0');
-
-  const day = pad(targetDate.getDate());
-  const month = pad(targetDate.getMonth() + 1);
-  const year = targetDate.getFullYear();
-
-  return `${day}/${month}/${year}`;
 };
 
 export const Dashboard: FC = () => {
@@ -69,11 +58,11 @@ export const Dashboard: FC = () => {
                   <HStack className="justify-between">
                     <HStack className="items-center gap-1">
                       <ClockArrowDown color="#000000" size={20} />
-                      <Text>{formatDate(project.deadline)}</Text>
+                      <Text>{formatDateDD_MM_YYYY(project.deadline)}</Text>
                     </HStack>
                     <HStack className="items-center gap-1">
                       <ClockArrowUp color="#000000" size={20} />
-                      <Text>{formatDate(project.updatedAt)}</Text>
+                      <Text>{formatDateDD_MM_YYYY(project.updatedAt)}</Text>
                     </HStack>
                   </HStack>
                 </VStack>
