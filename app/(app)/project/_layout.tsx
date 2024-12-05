@@ -20,7 +20,7 @@ export default function ProjectLayout() {
   if (error || (!isLoading && !project)) return <Redirect href="/" />;
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ flex: 1 }}>
       <HStack className="justify-between items-center p-2">
         <Button onPress={() => dismiss()} variant="link" className="w-1/6">
           <ButtonIcon as={ChevronLeft} />
