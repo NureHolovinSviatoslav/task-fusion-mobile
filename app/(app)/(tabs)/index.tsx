@@ -1,10 +1,5 @@
-import { Text } from '@/components/ui/text';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { Dashboard } from '@/components/screens/dashboard';
 
 export default function DashboardScreen() {
-  return (
-    <SafeAreaView>
-      <Text>Dashboard</Text>
-    </SafeAreaView>
-  );
+  return <Dashboard />;
 }

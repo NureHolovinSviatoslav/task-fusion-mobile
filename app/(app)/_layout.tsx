@@ -16,6 +16,7 @@ export default function Root() {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="project" options={{ headerShown: false }} />
     </Stack>
   );
 }
