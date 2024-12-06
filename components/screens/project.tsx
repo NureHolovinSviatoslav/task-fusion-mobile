@@ -4,12 +4,14 @@ import {
   useUserProject,
 } from '@/apis/projects';
 import { Task, useTasksByStatus } from '@/apis/tasks';
-import { TaskPriority, TaskStatus } from '@/types/enums';
+import { TaskStatus } from '@/types/enums';
 import { formatDateDD_MM_YYYY_MM_HH } from '@/utils';
 import { Link } from 'expo-router';
 import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react-native';
-import { FC, PropsWithChildren, useCallback } from 'react';
+import { FC, useCallback } from 'react';
 import { RefreshControl, ScrollView } from 'react-native';
+import { Card } from '../shared/card';
+import { TaskPriority } from '../shared/task-priority';
 import {
   Accordion,
   AccordionContent,
@@ -26,29 +28,6 @@ import { Pressable } from '../ui/pressable';
 import { Text } from '../ui/text';
 import { VStack } from '../ui/vstack';
 
-const getTaskPriorityColor = (taskPriority: TaskPriority) => {
-  switch (taskPriority) {
-    case TaskPriority.LOW:
-      return '#67CB65';
-    case TaskPriority.MEDIUM:
-      return '#FF9533';
-    case TaskPriority.HIGH:
-      return '#E74444';
-  }
-};
-
-interface ProjectProps {
-  projectId: string | number;
-}
-
-const Card: FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <VStack className="p-4 gap-2 bg-background-200/50 rounded-lg">
-      {children}
-    </VStack>
-  );
-};
-
 interface TaskCardProps {
   task: Task;
 }
@@ -57,17 +36,10 @@ const TaskCard: FC<TaskCardProps> = ({ task }) => {
   return (
     <Link href={`/project/${task.projectId}/task/${task.id}`} asChild>
       <Pressable className="w-full">
-        <VStack className="bg-background-300 rounded-lg p-3 gap-3">
+        <VStack className="bg-background-300/80 rounded-lg p-3 gap-3">
           <HStack className="gap-2 justify-between items-center">
             <Heading size="md">{task.title}</Heading>
-            <Text
-              className="rounded-full text-white py-0.5 px-2 gap-2"
-              style={{
-                backgroundColor: getTaskPriorityColor(task.taskPriority),
-              }}
-            >
-              {task.taskPriority}
-            </Text>
+            <TaskPriority priority={task.taskPriority} />
           </HStack>
           <VStack>
             <HStack className="gap-2 justify-between items-center">
@@ -147,6 +119,10 @@ const CollapsableTasks: FC<CollapsableTasksProps> = ({ title, tasks }) => {
     </Card>
   );
 };
+
+interface ProjectProps {
+  projectId: string | number;
+}
 
 export const Project: FC<ProjectProps> = ({ projectId }) => {
   const {
