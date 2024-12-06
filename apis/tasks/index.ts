@@ -1,2 +1,2 @@
 export * from './hooks';
-export { Task } from './types';
+export { Task, TaskAction, TaskComment } from './types';

@@ -18,3 +18,28 @@ export type Task = {
 export type TasksResponse = Task[];
 
 export type TaskResponse = Task;
+
+export type TaskAction = {
+  id: number;
+  title: string;
+  taskId: number;
+  userId: number;
+  createdAt: Date;
+  updatedAt: Date;
+  user: PasswordlessUser;
+};
+
+export type TaskActionsResponse = TaskAction[];
+
+export type TaskComment = {
+  id: number;
+  taskId: number;
+  text: string;
+  userId: number;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
+export type TaskCommentResponse = TaskComment & { user: PasswordlessUser };
+
+export type TaskCommentsResponse = TaskCommentResponse[];

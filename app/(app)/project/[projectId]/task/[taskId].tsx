@@ -1,15 +1,8 @@
-import { Text } from '@/components/ui/text';
+import { Task } from '@/components/screens/task';
 import { useLocalSearchParams } from 'expo-router';
 
 export default function TaskScreen() {
-  const { taskId, projectId } = useLocalSearchParams();
+  const { taskId } = useLocalSearchParams();
 
-  return (
-    <>
-      <Text>
-        {taskId}
-        {projectId}
-      </Text>
-    </>
-  );
+  return <Task taskId={Array.isArray(taskId) ? taskId[0] : taskId} />;
 }
