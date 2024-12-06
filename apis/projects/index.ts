@@ -1,2 +1,2 @@
 export * from './hooks';
-export { Project } from './types';
+export { PasswordlessUser, Project } from './types';

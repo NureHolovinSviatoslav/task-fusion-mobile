@@ -3,7 +3,7 @@ import { Button, ButtonIcon, ButtonText } from '@/components/ui/button';
 import { Divider } from '@/components/ui/divider';
 import { Heading } from '@/components/ui/heading';
 import { HStack } from '@/components/ui/hstack';
-import { Redirect, Slot, useLocalSearchParams, useRouter } from 'expo-router';
+import { Redirect, Stack, useLocalSearchParams, useRouter } from 'expo-router';
 import { ChevronLeft } from 'lucide-react-native';
 import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -30,7 +30,7 @@ export default function ProjectLayout() {
         <View className="w-1/6" />
       </HStack>
       <Divider />
-      <Slot />
+      <Stack screenOptions={{ headerShown: false }} />
     </SafeAreaView>
   );
 }
