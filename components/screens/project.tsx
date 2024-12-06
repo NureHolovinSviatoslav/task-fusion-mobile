@@ -128,42 +128,42 @@ export const Project: FC<ProjectProps> = ({ projectId }) => {
   const {
     data: project,
     refetch: refetchProject,
-    isFetching: isRefetchingProject,
+    isRefetching: isRefetchingProject,
   } = useUserProject(projectId);
 
   const {
     data: projectPm,
     refetch: refetchProjectPm,
-    isFetching: isRefetchingProjectPm,
+    isRefetching: isRefetchingProjectPm,
   } = useProjectPm(projectId);
 
   const {
     data: projectDevelopers,
     refetch: refetchProjectDevelopers,
-    isFetching: isRefetchingProjectDevelopers,
+    isRefetching: isRefetchingProjectDevelopers,
   } = useProjectDevelopers(projectId);
 
   const {
     data: todoTasks,
-    isFetching: isRefetchingTodo,
+    isRefetching: isRefetchingTodo,
     refetch: refetchTodoTasks,
   } = useTasksByStatus(projectId.toString(), TaskStatus.TO_DO);
 
   const {
     data: progressTasks,
-    isFetching: isRefetchingProgress,
+    isRefetching: isRefetchingProgress,
     refetch: refetchProgressTasks,
   } = useTasksByStatus(projectId.toString(), TaskStatus.IN_PROGRESS);
 
   const {
     data: closedTasks,
-    isFetching: isRefetchingClosed,
+    isRefetching: isRefetchingClosed,
     refetch: refetchClosedTasks,
   } = useTasksByStatus(projectId.toString(), TaskStatus.CLOSED);
 
   const {
     data: frozenTasks,
-    isFetching: isRefetchingFrozen,
+    isRefetching: isRefetchingFrozen,
     refetch: refetchFrozenTasks,
   } = useTasksByStatus(projectId.toString(), TaskStatus.FROZEN);
 

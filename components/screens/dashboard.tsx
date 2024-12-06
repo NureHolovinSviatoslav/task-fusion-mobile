@@ -26,7 +26,7 @@ const getDashboard = (userType?: UserType) => {
 };
 
 export const Dashboard: FC = () => {
-  const { data: projects, refetch, isFetching } = useProjects();
+  const { data: projects, refetch, isRefetching } = useProjects();
   const { data: profile } = useUserProfile();
 
   return (
@@ -36,7 +36,7 @@ export const Dashboard: FC = () => {
         <FlatList
           data={(projects || []) as Project[]}
           keyExtractor={(project) => String(project.id)}
-          refreshing={isFetching}
+          refreshing={isRefetching}
           onRefresh={refetch}
           ListEmptyComponent={() => (
             <Text className="text-center font-medium">No projects</Text>

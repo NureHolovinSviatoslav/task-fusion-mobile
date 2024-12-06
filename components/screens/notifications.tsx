@@ -6,7 +6,7 @@ import { Text } from '../ui/text';
 import { VStack } from '../ui/vstack';
 
 export const Notifications: FC = () => {
-  const { data: notifications, refetch, isFetching } = useUserNotifications();
+  const { data: notifications, refetch, isRefetching } = useUserNotifications();
 
   return (
     <VStack className="p-4 pb-0 flex-1" space="xl">
@@ -15,7 +15,7 @@ export const Notifications: FC = () => {
         <FlatList
           data={notifications}
           keyExtractor={(notification) => String(notification.id)}
-          refreshing={isFetching}
+          refreshing={isRefetching}
           onRefresh={refetch}
           ListEmptyComponent={() => (
             <Text className="text-center font-medium">Empty</Text>
